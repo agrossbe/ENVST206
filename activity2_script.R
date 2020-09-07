@@ -93,8 +93,8 @@ totalPrcp$siteN <- as.numeric(totalPrcp$NAME)
 hist(totalPrcp$PRCP[totalPrcp$siteN == 1],
      freq=FALSE,
      main = paste(levels(totalPrcp$NAME)[1]),
-     xlab = "Average precipitation (mm)",
-     ylab = "Relative frequency",
+     xlab = "Total Annual Precipitation (mm)",
+     ylab = "Relative Frequency",
      col = "grey75",
      border = "white")
 
@@ -102,7 +102,17 @@ hist(totalPrcp$PRCP[totalPrcp$siteN == 1],
 hist(totalPrcp$PRCP[totalPrcp$siteN == 3],
      freq=FALSE,
      main = paste(levels(totalPrcp$NAME)[3]),
-     xlab = "Average precipitation (mm)",
-     ylab = "Relative frequency",
+     xlab = "Total Annual Precipitation (mm)",
+     ylab = "Relative Frequency",
      col = "grey75",
      border = "white")
+
+#likelihood of a year with 700mm or less in Aberdeen
+pnorm(700,
+      mean(totalPrcp$PRCP[totalPrcp$siteN == 1],na.rm=TRUE),
+      sd(totalPrcp$PRCP[totalPrcp$siteN == 1],na.rm=TRUE))
+
+#likelihood of a year with 700mm or less in Madan
+pnorm(700,
+      mean(totalPrcp$PRCP[totalPrcp$siteN == 3],na.rm=TRUE),
+      sd(totalPrcp$PRCP[totalPrcp$siteN == 3],na.rm=TRUE))
