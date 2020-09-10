@@ -10,19 +10,19 @@ str(datW)
 datW$NAME <- as.factor(datW$NAME)
 
 #vector of numeric data
-num <- matrix(c(11.5, 4, 17.2, 13, 56 ), ncol=5, byrow=FALSE)
+num <- matrix(c(11.5, 4, 17.2, 13, 56), ncol=5, byrow=FALSE)
 num
 
 #vector of character data
-cha <- matrix(c(color, shape, orientation, size, material), nrow=5)
+cha <- matrix(c("color", "shape", "orientation", "size", "material"), nrow=5)
 cha
 
 #vector of factor data
-fac <- matrix(c(site 1, site 2, site 3, site 4, site 5), nrow=5)
+fac <- as.factor(matrix(c("site 1", "site 2", "site 3", "site 4", "site 5"), nrow=5))
 fac
 
 #vector of integer data
-int <- matrix(c(13, 72, 11, 54, 62), nrow=5)
+int <- as.integer(matrix(c(13, 72, 11, 54, 62), nrow=5))
 int
 
 #find out all unique site names
@@ -71,6 +71,21 @@ hist(datW$TAVE[datW$siteN == 2],
 pnorm(0,
       mean(datW$TAVE[datW$siteN == 1],na.rm=TRUE),
       sd(datW$TAVE[datW$siteN == 1],na.rm=TRUE))
+
+#qnorm gives me the value at which all values and below equal the probability in my argument
+#Here I'm calculating the value of the 95th quantile or a probability of 0.95
+qnorm(0.95,
+      mean(datW$TAVE[datW$siteN == 1],na.rm=TRUE),
+      sd(datW$TAVE[datW$siteN == 1],na.rm=TRUE))
+
+#mean of Aberdeen
+Aberdeen.mean <- mean(datW$TAVE[datW$siteN == 1], na.rm=TRUE)
+Aberdeen.mean
+
+#frequency at which there are temperatures over the threshold for extreme temp
+1 - pnorm(18.5,
+          mean = Aberdeen.mean + 4,
+          sd(datW$TAVE[datW$siteN == 1], na.rm=TRUE))
 
 #histogram of Aberdeen, WA precipitation
 hist(datW$PRCP[datW$siteN == 1],
