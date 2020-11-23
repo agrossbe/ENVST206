@@ -110,7 +110,5 @@ all_ext <- full_join(new_ext_name, old_ext_name)
 
 ggplot(data=all_ext, aes(x=Observation, y=prcp, fill=Year))+
   geom_bar(stat="identity", position = "dodge")+
-  labs(x="Observation", y="Precipitation (mm)")+
+  labs(x="Observation", y="Precipitation (mm)", title="Comparison of Days with Precipitation over the 99th Percentile for 1946-1981")+
   scale_fill_manual(values=c("mediumseagreen", "lightsalmon4"))
-
-  
